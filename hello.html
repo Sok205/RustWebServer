@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello from Rust!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(135deg, #23243a 0%, #2d2540 100%);
+            color: #fff;
+            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            position: relative;
+            background: rgba(0,0,0,0.3);
+            padding: 2rem 3rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            text-align: center;
+            overflow: visible;
+            z-index: 1;
+        }
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -8px; left: -8px; right: -8px; bottom: -8px;
+            border-radius: 2rem;
+            z-index: -1;
+            background: linear-gradient(var(--box-gradient-angle, 270deg), #ff5858, #f09819, #667eea, #764ba2, #34e89e, #0f3443, #ff5858);
+            background-size: 400% 400%;
+            opacity: 1;
+            animation: gradientFlow 6s ease-in-out infinite;
+            transition: background 0.3s;
+        }
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+        p {
+            font-size: 1.3rem;
+            margin-top: 0;
+        }
+        .rust-logo {
+            width: 80px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img class="rust-logo" src="https://www.rust-lang.org/static/images/rust-logo-blk.svg" alt="Rust Logo">
+    <h1>Hello, world!</h1>
+    <p>Welcome to the Rust web server</p>
+</div>
+<script>
+    document.body.addEventListener('mousemove', function(e) {
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+        const angle = Math.round((x + y) * 180);
+        document.querySelector('.container').style.setProperty('--box-gradient-angle', angle + 'deg');
+    });
+</script>
+</body>
+</html>
